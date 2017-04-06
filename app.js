@@ -4,9 +4,35 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
+var config = require('./config/config');
+var mongoose = require('mongoose');
+var fs = require('fs');
+
+fs.readdirSync('./models/').forEach(function(file) {
+    if (~file.indexOf('.js')) {
+        require('./models/' + file);
+    }
+});
+
+mongoose.connect(config.DBUrl);
+
+var db = mongoose.connection;
+
+db.on('error', function(err) {
+    console.error("Mongo connection error: ", err);
+});
+
+db.on('open', function callback() {
+    console.info("Mongo connection established");
+});
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
+
+require('./config/passport')(passport);
 
 var app = express();
 
@@ -21,9 +47,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: config.SessionSecret,
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
