@@ -7,45 +7,38 @@
 
 <body class="skin-blue sidebar-collapse fixed sidebar-mini">
 <div class="wrapper">
-  <% include ./partials/header.ejs %>
+    <% include ./partials/header.ejs %>
 
-  <% include ./partials/sidebar.ejs %>
+    <% include ./partials/sidebar.ejs %>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Kontrol Paneli
-        <small>Version 2.0</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Kontrol Paneli</a></li>
-      </ol>
-    </section>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Kontrol Paneli
+                <small>Version 2.0</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Kontrol Paneli</a></li>
+            </ol>
+        </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <!-- Info boxes -->
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-8 col-md-offset-2">
-          <tr>
-            <td>
-              <button type="button" class="btn btn-block btn-primary btn-lg">Geçmiş</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-block btn-primary btn-lg">Kayılar</button>
-            </td>
-          </tr>
-        </div>
-      </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+        <!-- Main content -->
+        <section class="content">
+            <!-- Info boxes -->
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 style="color: green;"><%= message %></h1>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-  <% include ./partials/footer.ejs%>
+    <% include ./partials/footer.ejs%>
 </div>
 <!-- ./wrapper -->
 
