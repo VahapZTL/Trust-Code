@@ -35,6 +35,8 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var kayitekle = require('./routes/kayitekle');
 var success = require('./routes/success');
+var sifrele = require('./routes/urunsifrele');
+var show = require('./routes/showData');
 
 require('./config/passport')(passport);
 
@@ -66,6 +68,8 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/kayitekle', kayitekle);
 app.use('/success', success);
+app.use('/urunsifrele', sifrele);
+app.use('/showData', show);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
